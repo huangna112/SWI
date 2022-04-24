@@ -7,12 +7,12 @@ We provide here some matlab codes of certain methods for solving unsymmetric pos
 - **DIOM** Direct Incomplete Orthogonalization Method (Algorithms 6.6 and 6.8 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)")
 - **DQGMRES** Direct Quasi-GMRES (DQGMRES) (Algorithms 6.6 and 6.13 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)")
 
-## Tests
+## Test
 ### Convection-diffusion
 The linear system arises from the convection diffusion equation. 
 - **test_condiff** Run this file get the comparing results.
 
-- 
+
 ### SuiteSparse Matrix
 We select matrix from the SuiteSparse Matrix Collection [https://sparse.tamu.edu/] and b = Ax\* with x\* = (1,1,...,1)\T
 - **test_suitesparse.m**  Run this file get the comparing results. 
