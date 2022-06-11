@@ -1,7 +1,7 @@
 # Matlab Codes of SWI, DIOM, DQGMRES
 
 ## How to cite
-If you use swi in your work, please cite using the format given in 
+If you use swi in your work, please cite using the format given in [Link](http://a.com)
 
 ## Content
 We provide here some matlab codes of certain methods for solving unsymmetric positive definite linear systems Ax = b.
