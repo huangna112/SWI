@@ -19,7 +19,7 @@ The linear system arises from the convection diffusion equation.
 
 
 ### SuiteSparse Matrix
-We select matrix from the SuiteSparse Matrix Collection [https://sparse.tamu.edu/] and b = Ax\* with x\* = (1,1,...,1)'.
+We select matrix from the [SuiteSparse Matrix Collection](https://sparse.tamu.edu/) and b = Ax\* with x\* = (1,1,...,1)'.
 - **test_suitesparse.m**  Runing this file gets the comparing results. 
 - **testproblem.txt** Storing all the file name of testing matrices.
 
