@@ -1,4 +1,3 @@
-function [x, k, res, resvec] = swi(A, b, mk, tol, x0, maxit)
 %% 2021-06-01
 %% Na Huang
 
@@ -30,6 +29,7 @@ function [x, k, res, resvec] = swi(A, b, mk, tol, x0, maxit)
 %   residual norms at each iteration, including NORM(B-AZ).
 %------------------------------------------------------------------
 
+function [x, k, res, resvec] = swi(A, b, mk, tol, x0, maxit)
 
 n  = length(b);    
 nb = norm(b);
