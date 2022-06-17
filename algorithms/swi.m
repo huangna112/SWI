@@ -1,35 +1,36 @@
-%% 2021-06-01
-%% Na Huang
+function [x, k, res, resvec] = swi(A, b, mk, tol, x0, maxit)
 
 %  SWI   Sliding window implementation with pre-allocated memory
 % 
-%   [Z] = SWI(A, B) attempts to find a solution Z to the system of linear equations
-%   AZ=B.  The N-by-N coefficient matrix A must be positive definite but need
-%   not be symmetric. The right hand side column vector B must have length N.
+%   [x] = swi(A, b) attempts to find a solution x to the system of linear equations
+%   Ax=b.  The n-by-n coefficient matrix A must be positive definite but need
+%   not be symmetric. The right hand side column vector b must have length n.
 %
-%   [Z] = SWI(A, B, MK) specifies the number of the sliding window. If MK is []
-%   then SWI2 uses the default, N.
+%   [x] = swi(A, b, mk) specifies the number of the sliding window. If mk is [] 
+%   then swi uses the default, n.
 %
-%   [Z] = SWI(A, B, MK, TOL) specifies the tolerance of the method. If TOL is []
-%   then SWI2 uses the default, 1e-6.
+%   [x] = swi(A, b, mk, tol) specifies the tolerance of the method. If tol is []
+%   then swi uses the default, 1e-6.
 %
-%   [Z] = SWI(A, B, MK, TOL, Z)  specifies the initial guess.  If Z is [] then 
-%   SWI2 uses the default, an all zero vector.
+%   [x] = swi(A, b, mk, tol, x0)  specifies the initial guess. If x0 is [] 
+%   then swi uses the default, an all zero vector.
 %
-%   [Z] = SWI(A, B, MK, TOL, Z, MAXIT) specifies the maximum number of iterations.
-%   If MAXIT is [] then SWI2 uses the default, 10000.
+%   [x] = swi(A, b, mk, tol, x0, maxit) specifies the maximum number of iterations.
+%   If maxit is [] then swi uses the default, 10000.
 %
-%   [Z, K]=SWI(A, B, ...) returns the iteration number at which Z
-%   was computed: 1 <= ITER <= MAXIT.
+%   [x, k] = swi(A, b, ...) returns the iteration number at which x
+%   was computed: 1 <= k <= maxit.
 %
-%   [Z, K, RES]=SWI(A, B, ...) also returns the last relative
-%   residual norm NORM(B-AZ)/NORM(B).
+%   [x, k, res] = swi(A, b, ...) also returns the last relative
+%   residual norm norm(b-Ax)/norm(b).
 %
-%   [Z, K, Res, RESVEC]=SWI(A, B, ...) also returns a vector of estimates of the 
-%   residual norms at each iteration, including NORM(B-AZ).
+%   [x, k, res, resvec] = swi(A, b, ...) also returns a vector of estimates of the 
+%   residual norms at each iteration, including norm(b-Ax).
 %------------------------------------------------------------------
 
-function [x, k, res, resvec] = swi(A, b, mk, tol, x0, maxit)
+% 2021-06-01
+% Na Huang
+
 
 n  = length(b);    
 nb = norm(b);
