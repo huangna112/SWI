@@ -1,34 +1,34 @@
 function [x, k, res, resvec] = swiwp(A, b, mk, tol, x0, maxit)
-%% 2021-06-01
-%% Na Huang
 
 %  SWI   Sliding window implementation without pre-allocated memory
 % 
-%   [Z] =  SWIWP(A, B) attempts to find a solution Z to the system of linear equations
-%   AZ=B.  The N-by-N coefficient matrix A must be positive definite but need
-%   not be symmetric. The right hand side column vector B must have length N.
+%   [x] = swiwp(A, b) attempts to find a solution x to the system of linear equations
+%   Ax=b. The n-by-n coefficient matrix A must be positive definite but need
+%   not be symmetric. The right hand side column vector b must have length n.
 %
-%   [Z] =  SWIWP(A, B, MK) specifies the number of the sliding window. If MK is []
-%   then  SWIWP uses the default, N.
+%   [x] = swiwp(A, b, mk) specifies the number of the sliding window. If mk is [] 
+%   then swiwp uses the default, n.
 %
-%   [Z] =  SWIWP(A, B, MK, TOL) specifies the tolerance of the method. If TOL is []
-%   then  SWIWP uses the default, 1e-6.
+%   [x] = swiwp(A, b, mk, tol) specifies the tolerance of the method. If tol is []
+%   then swiwp uses the default, 1e-6.
 %
-%   [Z] =  SWIWP(A, B, MK, TOL, Z)  specifies the initial guess.  If Z is [] then 
-%    SWIWP uses the default, an all zero vector.
+%   [x] = swiwp(A, b, mk, tol, x0)  specifies the initial guess. If x0 is [] 
+%   then swiwp uses the default, an all zero vector.
 %
-%   [Z] =  SWIWP(A, B, MK, TOL, Z, MAXIT) specifies the maximum number of iterations.
-%   If MAXIT is [] then  SWIWP uses the default, 10000.
+%   [x] = swiwp(A, b, mk, tol, x0, maxit) specifies the maximum number of iterations.
+%   If maxit is [] then swiwp uses the default, 10000.
 %
-%   [Z, K]= SWIWP(A, B, ...) returns the iteration number at which Z
-%   was computed: 1 <= ITER <= MAXIT.
+%   [x, k] = swiwp(A, b, ...) returns the iteration number at which x
+%   was computed: 1 <= k <= maxit.
 %
-%   [Z, K, RES]= SWIWP(A, B, ...) also returns the last relative
-%   residual norm NORM(B-AZ)/NORM(B).
+%   [x, k, res] = swiwp(A, b, ...) also returns the last relative
+%   residual norm norm(b-Ax)/norm(b).
 %
-%   [Z, K, RESVEC]= SWIWP(A, B, ...) also returns a vector of estimates of the 
-%   residual norms at each iteration, including NORM(B-AZ).
+%   [x, k, res, resvec] = swiwp(A, b, ...) also returns a vector of estimates of the 
+%   residual norms at each iteration, including norm(b-Ax).
 %------------------------------------------------------------------
+% 2021-06-01
+% Na Huang
 
 
 n  = length(b);    
