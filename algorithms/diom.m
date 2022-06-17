@@ -2,6 +2,32 @@ function [x, k, res, resvec] = diom(A, b, mk, tol, x0, maxit)
 
 % Direct Incomplete Orthogonalization Method (DIOM)
 % Correspond to Algorithms 6.6 and 6.8 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)"
+
+%   [x] = diom(A, b) attempts to find a solution x to the system of linear equations
+%   Ax=b. The n-by-n coefficient matrix A must be positive definite but need
+%   not be symmetric. The right hand side column vector b must have length n.
+%
+%   [x] = diom(A, b, mk) specifies the number of the sliding window. If mk is [] 
+%   then diom uses the default, n.
+%
+%   [x] = diom(A, b, mk, tol) specifies the tolerance of the method. If tol is []
+%   then diom uses the default, 1e-6.
+%
+%   [x] = diom(A, b, mk, tol, x0)  specifies the initial guess. If x0 is [] 
+%   then diom uses the default, an all zero vector.
+%
+%   [x] = diom(A, b, mk, tol, x0, maxit) specifies the maximum number of iterations.
+%   If maxit is [] then diom uses the default, 10000.
+%
+%   [x, k] = diom(A, b, ...) returns the iteration number at which x
+%   was computed: 1 <= k <= maxit.
+%
+%   [x, k, res] = diom(A, b, ...) also returns the last relative
+%   residual norm norm(b-Ax)/norm(b).
+%
+%   [x, k, res, resvec] = diom(A, b, ...) also returns a vector of estimates of the 
+%   residual norms at each iteration, including norm(b-Ax).
+%------------------------------------------------------------------
 % 5 Jun 2021
 % Na Huang
 
