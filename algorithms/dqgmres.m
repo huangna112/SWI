@@ -1,6 +1,32 @@
 function [x, k, res, resvec] = dqgmres( A, b, mk, tol, x0, maxit)
 % Direct Quasi-GMRES (DQGMRES)
 % Correspond to Algorithms 6.6 and 6.13 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)"
+
+%   [x] = dqgmres(A, b) attempts to find a solution x to the system of linear equations
+%   Ax=b. The n-by-n coefficient matrix A must be positive definite but need
+%   not be symmetric. The right hand side column vector b must have length n.
+%
+%   [x] = dqgmres(A, b, mk) specifies the number of the sliding window. If mk is [] 
+%   then dqgmres uses the default, n.
+%
+%   [x] = dqgmres(A, b, mk, tol) specifies the tolerance of the method. If tol is []
+%   then dqgmres uses the default, 1e-6.
+%
+%   [x] = dqgmres(A, b, mk, tol, x0)  specifies the initial guess. If x0 is [] 
+%   then dqgmres uses the default, an all zero vector.
+%
+%   [x] = dqgmres(A, b, mk, tol, x0, maxit) specifies the maximum number of iterations.
+%   If maxit is [] then dqgmres uses the default, 10000.
+%
+%   [x, k] = dqgmres(A, b, ...) returns the iteration number at which x
+%   was computed: 1 <= k <= maxit.
+%
+%   [x, k, res] = dqgmres(A, b, ...) also returns the last relative
+%   residual norm norm(b-Ax)/norm(b).
+%
+%   [x, k, res, resvec] = dqgmres(A, b, ...) also returns a vector of estimates of the 
+%   residual norms at each iteration, including norm(b-Ax).
+%------------------------------------------------------------------
 % 8 July 2021
 % Na Huang
 
