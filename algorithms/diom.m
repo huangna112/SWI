@@ -1,6 +1,6 @@
 function [x, k, res, resvec] = diom(A, b, mk, tol, x0, maxit)
 
-% Direct Incomplete Orthogonalization Method (DIOM)
+% DIOM Direct Incomplete Orthogonalization Method
 % Correspond to Algorithms 6.6 and 6.8 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)"
 
 %   [x] = diom(A, b) attempts to find a solution x to the system of linear equations
