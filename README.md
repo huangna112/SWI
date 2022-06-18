@@ -1,4 +1,4 @@
-# Matlab Codes of SWI, DIOM, DQGMRES
+# Matlab Code of SWI, DIOM, DQGMRES
 
 ## How to cite
 If you use swi in your work, please cite using the format given in [CITATION.bib](https://github.com/huangna112/SWI/blob/main/CITATION.bib)
