@@ -1,5 +1,5 @@
 function [x, k, res, resvec] = dqgmres( A, b, mk, tol, x0, maxit)
-% Direct Quasi-GMRES (DQGMRES)
+% DQGMRES Direct Quasi-GMRES
 % Correspond to Algorithms 6.6 and 6.13 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)"
 
 %   [x] = dqgmres(A, b) attempts to find a solution x to the system of linear equations
