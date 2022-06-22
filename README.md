@@ -1,4 +1,4 @@
-# Matlab Code of SWI, DIOM, DQGMRES
+# MATLAB code of some Krylov methods for solving unsymmetric positive definite linear systems
 
 ## How to cite
 If you use swi in your work, please cite using the format given in [CITATION.bib](https://github.com/huangna112/SWI/blob/main/CITATION.bib)
