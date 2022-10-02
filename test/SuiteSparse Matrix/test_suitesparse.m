@@ -1,7 +1,8 @@
 fid =fopen('testproblem.txt','r');  % read file that contains test problems
 sfil='TestResults';
 
-leg={'BICGSTAB','GMRES','DQGMRES(5)','DQGMRES(10)','DQGMRES(100)','FOM','DIOM(2)','DIOM(5)','DIOM(10)','DIOM(100)','SCG','SWI(2)','SWI(5)','SWI(10)','SWI(100)'};
+leg={'BICGSTAB','GMRES','DQGMRES(5)','DQGMRES(10)','DQGMRES(100)','FOM','DIOM(2)','DIOM(5)','DIOM(10)','DIOM(100)','SCG','SWI(2)','SWI(5)','SWI(10)','SWI(100)'...
+...'RGMRES', 'RFOM', 'RSCG', 'DSWI'};
 
 % Set input parameters:
 tol = 1.e-6;
@@ -42,6 +43,14 @@ i = i+3;
 TestResult{1, i} = leg(14);
 i = i+3;
 TestResult{1, i} = leg(15);
+i = i+3;
+TestResult{1, i} = leg(16);
+i = i+3;
+TestResult{1, i} = leg(17);
+i = i+3;
+TestResult{1, i} = leg(18);
+i = i+3;
+TestResult{1, i} = leg(19);
 
 maxit = 10000;
 
@@ -70,7 +79,7 @@ while ~feof(fid)
     %% GMRES
     i = i+3;
     tic
-    [~,TestResult{p, i},TestResult{p, i+2}] = dqgmres(A, b, [], tol);
+    [~,TestResult{p, i},TestResult{p, i+2}] = regmres(A, b, [], tol);
     TestResult{p, i+1} = toc;
     
     i = i+3;
@@ -92,7 +101,7 @@ while ~feof(fid)
     %% FOM
     i = i+3;
     tic
-    [~, TestResult{p, i}, TestResult{p, i+2}] = diom(A, b, [], tol);
+    [~, TestResult{p, i}, TestResult{p, i+2}] = refom(A, b, [], tol);
     TestResult{p, i+1} = toc;
     
     i = i+3;
@@ -119,7 +128,7 @@ while ~feof(fid)
     %% SCG
     i = i+3;
     tic
-    [~, TestResult{p, i}, TestResult{p, i+2}]=swiwp(A, b, [], tol);
+    [~, TestResult{p, i}, TestResult{p, i+2}]=rescg(A, b, [], tol);
     TestResult{p, i+1} = toc;
     
     i = i+3;
@@ -142,7 +151,29 @@ while ~feof(fid)
     [~, TestResult{p, i}, TestResult{p, i+2}]=swi(A, b, 100, tol);
     TestResult{p, i+1} = toc;
     
+    %% Restart
+    restart = 20;
     
+    i = i+3;
+    tic
+    [~, TestResult{p, i}, TestResult{p, i+2}]=regmres(A, b, restart, tol);
+    TestResult{p, i+1} = toc;
+    
+    i = i+3;
+    tic
+    [~, TestResult{p, i}, TestResult{p, i+2}]=refom(A, b, restart, tol);
+    TestResult{p, i+1} = toc;
+        
+    i = i+3;
+    tic
+    [~, TestResult{p, i}, TestResult{p, i+2}]=rescg(A, b, restart, tol);
+    TestResult{p, i+1} = toc;
+    
+    %% DSWI
+    i = i+3;
+    tic
+    [~, TestResult{p, i}, TestResult{p, i+2}]=dynswiwp(A, b, restart, tol);
+    TestResult{p, i+1} = toc;
     
     p = p+1
     save(sfil);
