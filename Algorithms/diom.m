@@ -32,7 +32,7 @@ function [x, k, res, resvec] = diom(A, b, m, tol, x0, maxit)
 % Na Huang
 
 n  = length(b);
-nb = norm(b);
+
 
 %------------------------------------------------------------------
 %     Retrieve input arguments.
@@ -62,7 +62,8 @@ end
 if gotx0 ~= 0
     b = b - A*x0;
 end
-x = zeros(n,1);
+nb = norm(b);
+x  = zeros(n,1);
 
 mm1  = m-1;
 
@@ -74,8 +75,8 @@ L      = zeros(mm1,1);
 h      = zeros(m+2,1); %% store the last column of Hk, h_{k+1,k}, and h_{k,k-1}
 
 
-r      = b - A*x;
-nr     = norm(r);
+r      = b;
+nr     = nb;
 beta   = nr;
 zeta   = beta;
 V(:,1) = r/beta;
