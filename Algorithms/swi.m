@@ -32,7 +32,7 @@ function [x, k, res, resvec] = swi(A, b, m, tol, x0, maxit)
 
 
 n  = length(b);    
-nb = norm(b);
+
 
 
 %------------------------------------------------------------------
@@ -63,7 +63,8 @@ end
 if gotx0 ~= 0
     b = b - A*x0;
 end
-x = zeros(n,1);
+nb = norm(b);
+x  = zeros(n,1);
 
 
 L      = zeros(m,m);
@@ -74,8 +75,8 @@ resvec = zeros(maxit,1);
 
 
 k   = 0;
-r   = b - A*x;  
-nr  = norm(r);
+r   = b;  
+nr  = nb;
 tol = tol*nb;
  
 
@@ -93,8 +94,8 @@ while (k < maxit) && (nr >= tol)
         q  = A*p;
         i  = 1; 
     else
-        m       = min(k-1, m);
-        vim       = i+1:m;
+        mk        = min(k-1, m);
+        vim       = i+1:mk;
         ind       = [vim 1:i];
         P(:, i)   = p; 
         Q(:, i)   = q; 
