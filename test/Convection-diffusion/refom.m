@@ -1,7 +1,7 @@
 function [x, k, res, resvec] = refom(A, b, restart, tol, x0, maxit)
 
 % refom Restarted Full Orthogonalization Method
-% Correspond to Algorithms 6.4 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)"
+% Correspond to Algorithm 6.5 in Yousef Saad's "Iterative Methods for Sparse Linear System (2nd Edition)"
 % solve the triangular system used backward substitution
 
 %   [x] = refom(A, b) attempts to find a solution x to the system of linear equations
