@@ -7,7 +7,7 @@ If you use swi in your work, please cite using the format given in [CITATION.bib
 We provide here some matlab code of certain methods for solving unsymmetric positive definite linear systems Ax = b.
 
 ## Algorithms
-- **REGMRES** Restarted GMRES (REGMRES) (Algorithms 6.6 and 6.11 in Yousef Saad's [Iterative Methods for Sparse Linear System (2nd Edition)](https://epubs.siam.org/doi/book/10.1137/1.9780898718003)) (When restart=n, it equals to GMRES).
+- **REGMRES** Restarted GMRES (REGMRES) (Algorithm 6.11 in Yousef Saad's [Iterative Methods for Sparse Linear System (2nd Edition)](https://epubs.siam.org/doi/book/10.1137/1.9780898718003)) (When restart=n, it equals to GMRES).
 - **REFOM** Restarted Full Orthogonalization Method (Algorithms 6.5 in Yousef Saad's [Iterative Methods for Sparse Linear System (2nd Edition)](https://epubs.siam.org/doi/book/10.1137/1.9780898718003)) (When restart=n, it equals to FOM). 
 - **RESCG** Restarted Semi-Conjugate Gradient Method (When restart=n, it equals to SCG).
 - **DQGMRES** Direct Quasi-GMRES (DQGMRES) (Algorithms 6.6 and 6.13 in Yousef Saad's [Iterative Methods for Sparse Linear System (2nd Edition)](https://epubs.siam.org/doi/book/10.1137/1.9780898718003)) (When m=n, it equals to GMRES).
