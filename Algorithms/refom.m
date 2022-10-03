@@ -113,6 +113,7 @@ while (k < maxit) && (nr >= tol)
         end
     end
     %     %% yk = Hkk\ge;  Use bacinnerward substitution to solve the upper triangular system
+    %     yk = zeors(inner,1);
     %     yk(inner) = ykinner;
     %     for i = (inner-1) : -1 : 1
     %         vi = i+1 : inner;
