@@ -1,6 +1,6 @@
 function [x, k, res, resvec] = rescg(A, b, restart, tol, x0, maxit)
 
-%  SCG   Restarted semi-conjugate gradient method
+%  RESCG   Restarted semi-conjugate gradient method
 %
 %   [x] = rescg(A, b) attempts to find a solution x to the system of linear equations
 %   Ax=b. The n-by-n coefficient matrix A must be positive definite but need
