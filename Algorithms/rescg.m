@@ -1,33 +1,35 @@
 function [x, k, res, resvec] = rescg(A, b, restart, tol, x0, maxit)
 
-%  SCG   Restarted semi-conjugate gradient method
+%  RESCG   Restarted semi-conjugate gradient method
 %
 %   [x] = rescg(A, b) attempts to find a solution x to the system of linear equations
-%   Ax=b. The n-by-n coefficient matrix A must be positive definite but need
-%   not be symmetric. The right hand side column vector b must have length n.
+%   Ax=b. The n-by-n matrix A must be positive definite but need not be symmetric.
+%   The right-hand side column vector b must have length n.
 %
-%   [x] = rescg(A, b, restart) specifies the restarted number. If restart is []
-%   then rescg uses the default, n.
+%   [x] = rescg(A, b, restart) specifies the restart number. If restart is []
+%   then rescg uses the default, n.  (This is usually too large when n is large.)
 %
-%   [x] = rescg(A, b, restart, tol) specifies the tolerance of the method. If tol is []
-%   then rescg uses the default, 1e-6.
+%   [x] = rescg(A, b, restart, tol) specifies the stopping tolerance.
+%   If tol is [], rescg uses the default, 1e-6.
+%   Note: Even if the user specifies x0, the stopping rule for Ax = b is relevant:
+%         norm(r)/norm(b) <= tol, where r = b - A(x0+d) and d is called x below.
 %
-%   [x] = rescg(A, b, restart, tol, x0)  specifies the initial guess. If x0 is []
-%   then rescg uses the default, an all zero vector.
+%   [x] = rescg(A, b, restart, tol, x0) specifies the initial guess.
+%   If x0 is [], rescg uses the default, an all zero vector.
 %
-%   [x] = rescg(A, b, restart, tol, x0, maxit) specifies the maximum number of iterations.
-%   If maxit is [] then rescg uses the default, 10000.
+%   [x] = rescg(A, b, restart, tol, x0, maxit) specifies the iteration limit.
+%   If maxit is [], rescg uses the default, 10000.
 %
 %   [x, k] = rescg(A, b, ...) returns the iteration number at which x
 %   was computed: 1 <= k <= maxit.
 %
-%   [x, k, res] = rescg(A, b, ...) also returns the last relative
-%   residual norm norm(b-Ax)/norm(b).
+%   [x, k, res] = rescg(A, b, ...) returns the last relative residual norm
+%   res = norm(b-Ax)/norm(b).
 %
-%   [x, k, res, resvec] = rescg(A, b, ...) also returns a vector of estimates of the
-%   residual norms at each iteration, including norm(b-Ax).
+%   [x, k, res, resvec] = rescg(A, b, ...) returns a vector of estimates of the
+%   residual norms norm(b-Ax) at each iteration.
 %------------------------------------------------------------------
-% 2022-09-16
+% 2022-10-17
 % Na Huang
 
 
